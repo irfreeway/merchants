@@ -1,0 +1,794 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the Zarpay24 API"
+        >
+    <title>Zarpay24 API documentation</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-9c19b03a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-966d6edc.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-024da600.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-c2b61e46.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#balance" class="toc-h1 toc-link" data-title="Balance">Balance</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-balance" class="toc-h2 toc-link" data-title="Get Balance">Get Balance</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#market" class="toc-h1 toc-link" data-title="Market">Market</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-coin-price" class="toc-h2 toc-link" data-title="Get Coin Price">Get Coin Price</a>
+                  </li>
+                  <li>
+                    <a href="#buy-coin-with-quantity" class="toc-h2 toc-link" data-title="Buy Coin with Quantity">Buy Coin with Quantity</a>
+                  </li>
+                  <li>
+                    <a href="#sell-coin-with-quantity" class="toc-h2 toc-link" data-title="Sell Coin with Quantity">Sell Coin with Quantity</a>
+                  </li>
+                  <li>
+                    <a href="#buy-coin-with-quote" class="toc-h2 toc-link" data-title="Buy Coin with Quote">Buy Coin with Quote</a>
+                  </li>
+                  <li>
+                    <a href="#sell-coin-with-quote" class="toc-h2 toc-link" data-title="Sell Coin with Quote">Sell Coin with Quote</a>
+                  </li>
+                  <li>
+                    <a href="#get-orders" class="toc-h2 toc-link" data-title="Get Orders">Get Orders</a>
+                  </li>
+                  <li>
+                    <a href="#get-order-by-user-tracker" class="toc-h2 toc-link" data-title="Get Order by User Tracker">Get Order by User Tracker</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Zarpay24 API documentation. To get started with using our APIs, please follow these steps:</p>
+
+<ul>
+<li>Register on <a href="https://zarpay24.com/register">Zarpay24</a></li>
+<li>Complete your KYC;
+To ensure the security and compliance of our platform, you are required to complete the KYC (Know Your Customer) process. This involves verifying your identity. You will receive guidance through the process on our website.</li>
+<li>Add a Payment Card;
+Once your account is registered and your KYC process is complete, you will need to add a payment card to your account. This will enable you to interact with the API for making transactions and other operations.</li>
+</ul>
+<h1 id='authentication'>Authentication</h1>
+<p>You will be issued a unique API key that allows you to access and authenticate your requests to the Zarpay API. This key is crucial for securing your API calls</p>
+
+<p>ZarPay24 expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: your_api_key_here</code></p>
+
+<aside class="notice">
+You must replace <code>your_api_key_here</code> with your personal API key.
+</aside>
+
+<aside class="notice">
+To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/c/YMgtJA">Zarpay Support</a> or send mail to <a href="mailto:tech@zarpay24.com">tech@zarpay24.com</a>.
+</aside>
+<h1 id='balance'>Balance</h1><h2 id='get-balance'>Get Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://napi.zarpay24.com/api/v1/assets/fiat-balance/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IRT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20109"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"blocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOLD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017.317"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"blocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves your balance of each coin.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://napi.zarpay24.com/api/v1/assets/fiat-balance/</code></p>
+<h1 id='market'>Market</h1><h2 id='get-coin-price'>Get Coin Price</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://napi.zarpay24.com/api/v1/market/coins/GOLD/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOLD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"persian_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آب‌شده"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"buy_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sell_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"max_order_qty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"350000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"buy_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sell_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"گرم"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves detailed information about a specific coin.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://napi.zarpay24.com/api/v1/market/coins/&lt;symbol&gt;/</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>The symbol of coin to retrieve.</td>
+</tr>
+</tbody></table>
+<h2 id='buy-coin-with-quantity'>Buy Coin with Quantity</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/buy/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "coin_id":1,
+    "quantity":"12.00"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">291</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_with_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">80000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_tracker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.321695Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.319125Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آب‌شده"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows you to purchase a coin by specifying the desired quantity.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://napi.zarpay24.com/api/v1/market/buy/</code></p>
+<h3 id='request-body'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin_id</td>
+<td>The id of coin to buy.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>The quantity of coin to buy.</td>
+</tr>
+</tbody></table>
+<h2 id='sell-coin-with-quantity'>Sell Coin with Quantity</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/sell/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "coin_id":1,
+    "quantity":"12.00"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">291</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_with_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">80000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_tracker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.321695Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.319125Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آب‌شده"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows you to sell a coin by specifying the desired quantity.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://napi.zarpay24.com/api/v1/market/sell/</code></p>
+<h3 id='request-body-2'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin_id</td>
+<td>The id of coin to sell.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>The quantity of coin to sell.</td>
+</tr>
+</tbody></table>
+<h2 id='buy-coin-with-quote'>Buy Coin with Quote</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/buy/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "coin_id":1,
+    "quote":"50000"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">291</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_with_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">80000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_tracker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.321695Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.319125Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آب‌شده"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint creates an order to buy a coin by specifying the desired quote amount.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://napi.zarpay24.com/api/v1/market/buy/</code></p>
+<h3 id='request-body-3'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin_id</td>
+<td>The id of coin to buy.</td>
+</tr>
+<tr>
+<td>quote</td>
+<td>Amount of quote currency to spend.</td>
+</tr>
+</tbody></table>
+<h2 id='sell-coin-with-quote'>Sell Coin with Quote</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/sell/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "coin_id":1,
+    "quote":"50000"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">291</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_with_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">80000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_tracker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.321695Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.319125Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آب‌شده"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint creates an order to sell a coin by specifying the desired quote amount.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://napi.zarpay24.com/api/v1/market/sell/</code></p>
+<h3 id='request-body-4'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin_id</td>
+<td>The id of coin to sell.</td>
+</tr>
+<tr>
+<td>quote</td>
+<td>Amount of quote currency to receive.</td>
+</tr>
+</tbody></table>
+<h2 id='get-orders'>Get Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/orders/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"page_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"470358"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quote_with_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4662264"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">47094.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"coin_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4708.00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-30T10:55:52.949253Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-30T10:55:52.948687Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آبشده"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a list of orders with pagination.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://napi.zarpay24.com/api/v1/market/orders/</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>The page number to retrieve (default: 1).</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>The number of items per page (default: 10).</td>
+</tr>
+</tbody></table>
+<h2 id='get-order-by-user-tracker'>Get Order by User Tracker</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/orders/by-tracker/&lt;user_tracker&gt;/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"page_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"470358"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quote_with_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4662264"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">47094.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"coin_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4708.00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-30T10:55:52.949253Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-30T10:55:52.948687Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آبشده"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the details of a specific order using the <code>user_tracker</code> identifier.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://napi.zarpay24.com/api/v1/market/orders/by-tracker/&lt;user_tracker&gt;/</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_tracker</td>
+<td>Unique tracker ID of the order to fetch details for.</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<p>The ZarPay24 API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The IP you are requesting from is not valid.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified source could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a source with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
