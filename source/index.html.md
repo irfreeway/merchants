@@ -10,6 +10,7 @@ toc_footers:
 includes:
   - introduction
   - authentication
+  - kyc
   - balance
   - market
   - errors
@@ -20,5 +21,5 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Zarpay24 API
+    content: Comprehensive guide for our business partners
 ---
