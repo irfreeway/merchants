@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta
             name="description"
-            content="Documentation for the Zarpay24 API"
+            content="Comprehensive guide for our business partners"
         >
     <title>Zarpay24 Merchants Guide V0.0.1</title>
 
@@ -324,6 +324,17 @@
             <a href="#authentications" class="toc-h1 toc-link" data-title="Authentications">Authentications</a>
           </li>
           <li>
+            <a href="#kyc" class="toc-h1 toc-link" data-title="KYC">KYC</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-profile-include-kyc-state" class="toc-h2 toc-link" data-title="Get Profile(include KYC state)">Get Profile(include KYC state)</a>
+                  </li>
+                  <li>
+                    <a href="#proceed-kyc-register-personal-info" class="toc-h2 toc-link" data-title="Proceed KYC (register personal info)">Proceed KYC (register personal info)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#balance" class="toc-h1 toc-link" data-title="Balance">Balance</a>
               <ul class="toc-list-h2">
                   <li>
@@ -406,6 +417,76 @@ You must replace <code>your_api_key_here</code> with your personal API key.
 <aside class="notice">
 To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/c/YMgtJA">Zarpay Support</a> or send mail to <a href="mailto:tech@zarpay24.com">tech@zarpay24.com</a>.
 </aside>
+<h1 id='kyc'>KYC</h1><h2 id='get-profile-include-kyc-state'>Get Profile(include KYC state)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{BASE_URL}/users/profile/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ایمان اشراقی"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+98912****873"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone_number_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0912****873"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invite_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XGvy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"national_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"******1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_blocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_banned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ایمان"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"اشراقی"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"kyc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DN"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves user profile detail which includes KYC state.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET {BASE_URL}/users/profile/</code></p>
+<h2 id='proceed-kyc-register-personal-info'>Proceed KYC (register personal info)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{BASE_URL}/users/personal-info/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "national_number": "0010859684",
+    "birth_date": "1998-01-12"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ایمان اشراقی"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+98912****873"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone_number_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0912****873"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invite_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XGvy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"national_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"******1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_blocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_banned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ایمان"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"اشراقی"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"kyc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DN"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows you ti submit client personal-info and proceed KYC.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET {BASE_URL}/users/personal-info/</code></p>
+<h3 id='request-body'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>national_number</td>
+<td>10 numbers length.</td>
+</tr>
+<tr>
+<td>birth_date</td>
+<td>The gregorian birth_date in %Y-%M-%D format.</td>
+</tr>
+</tbody></table>
 <h1 id='balance'>Balance</h1><h2 id='get-balance'>Get Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{BASE_URL}/api/v1/assets/fiat-balance/'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
