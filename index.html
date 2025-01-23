@@ -9,7 +9,7 @@
             name="description"
             content="Documentation for the Zarpay24 API"
         >
-    <title>Zarpay24 API documentation</title>
+    <title>Zarpay24 Merchants Guide V0.0.1</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -313,10 +313,15 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#what-is-this-document-about" class="toc-h1 toc-link" data-title="What is this document about?">What is this document about?</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#available-features" class="toc-h2 toc-link" data-title="Available Features:">Available Features:</a>
+                  </li>
+              </ul>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#authentications" class="toc-h1 toc-link" data-title="Authentications">Authentications</a>
           </li>
           <li>
             <a href="#balance" class="toc-h1 toc-link" data-title="Balance">Balance</a>
@@ -363,17 +368,31 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Zarpay24 API documentation. To get started with using our APIs, please follow these steps:</p>
+        <h1 id='what-is-this-document-about'>What is this document about?</h1>
+<p>This project enables merchants to act on behalf of their users, offering a variety of essential services to enhance their experience on our platform. By leveraging the features below, merchants can provide seamless, efficient, and secure interactions for users, handling key account and transaction actions.</p>
+<h2 id='available-features'>Available Features:</h2><h3 id='login-register-via-phone'>Login/Register via Phone</h3>
+<p>Merchants can help users register and log in to the platform using their phone number, simplifying the onboarding process.</p>
+<h3 id='kyc-processing'>KYC Processing</h3>
+<p>Merchants can facilitate the KYC process for users by entering their personal information, ensuring smooth verification.</p>
+<h3 id='profile-management'>Profile Management</h3>
+<p>Merchants can update and manage user profile details to keep account information up to date.</p>
+<h3 id='place-buy-orders'>Place Buy Orders</h3>
+<p>Merchants can initiate buy orders on behalf of users, allowing them to make purchases of gold.</p>
+<h3 id='place-sell-orders'>Place Sell Orders</h3>
+<p>Merchants can place sell orders on behalf of users, enabling them to sell gold when needed.</p>
+<h3 id='order-history'>Order History</h3>
+<p>Merchants can access the complete history of orders placed by the user, providing transparency and insights.</p>
+<h3 id='add-new-bank-account'>Add New Bank Account</h3>
+<p>Merchants can link new bank accounts to a user’s profile for deposits and withdrawals.</p>
+<h3 id='request-irt-withdrawal'>Request IRT Withdrawal</h3>
+<p>Merchants can initiate withdrawals to IRT (Iranian Rial) accounts on behalf of users.</p>
+<h3 id='transaction-history'>Transaction History</h3>
+<p>Merchants can view a comprehensive history of financial transactions made by users, ensuring full transparency.</p>
+<h3 id='portfolio-management'>Portfolio Management</h3>
+<p>Merchants can view and manage the user’s gold balances and portfolio, providing real-time insights into holdings.</p>
 
-<ul>
-<li>Register on <a href="https://zarpay24.com/register">Zarpay24</a></li>
-<li>Complete your KYC;
-To ensure the security and compliance of our platform, you are required to complete the KYC (Know Your Customer) process. This involves verifying your identity. You will receive guidance through the process on our website.</li>
-<li>Add a Payment Card;
-Once your account is registered and your KYC process is complete, you will need to add a payment card to your account. This will enable you to interact with the API for making transactions and other operations.</li>
-</ul>
-<h1 id='authentication'>Authentication</h1>
+<p>This system provides merchants with all the necessary tools to manage user accounts and transactions efficiently, ensuring both convenience and security at every step.</p>
+<h1 id='authentications'>Authentications</h1>
 <p>You will be issued a unique API key that allows you to access and authenticate your requests to the Zarpay API. This key is crucial for securing your API calls</p>
 
 <p>ZarPay24 expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
@@ -387,7 +406,7 @@ You must replace <code>your_api_key_here</code> with your personal API key.
 <aside class="notice">
 To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/c/YMgtJA">Zarpay Support</a> or send mail to <a href="mailto:tech@zarpay24.com">tech@zarpay24.com</a>.
 </aside>
-<h1 id='balance'>Balance</h1><h2 id='get-balance'>Get Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://napi.zarpay24.com/api/v1/assets/fiat-balance/'</span> <span class="se">\</span>
+<h1 id='balance'>Balance</h1><h2 id='get-balance'>Get Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{BASE_URL}/api/v1/assets/fiat-balance/'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
 </code></pre></div>
@@ -409,7 +428,7 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 </span></code></pre></div>
 <p>This endpoint retrieves your balance of each coin.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://napi.zarpay24.com/api/v1/assets/fiat-balance/</code></p>
+<p><code>GET {BASE_URL}/api/v1/assets/fiat-balance/</code></p>
 <h1 id='market'>Market</h1><h2 id='get-coin-price'>Get Coin Price</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://napi.zarpay24.com/api/v1/market/coins/GOLD/'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>

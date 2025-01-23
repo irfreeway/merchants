@@ -1,0 +1,8 @@
+<h1 id='welcome-to-the-api-documentation'>Welcome to the API Documentation</h1>
+<p>This is the default index page. From here, you can navigate to other sections of the documentation:</p>
+
+<ul>
+<li><a href="balance.html">Balance</a></li>
+<li><a href="transactions.html">Transactions</a></li>
+<li><a href="other-page.html">Other Information</a></li>
+</ul>
