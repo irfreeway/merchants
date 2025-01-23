@@ -321,7 +321,7 @@
               </ul>
           </li>
           <li>
-            <a href="#authentications" class="toc-h1 toc-link" data-title="Authentications">Authentications</a>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
             <a href="#kyc" class="toc-h1 toc-link" data-title="KYC">KYC</a>
@@ -346,7 +346,7 @@
             <a href="#market" class="toc-h1 toc-link" data-title="Market">Market</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-coin-price" class="toc-h2 toc-link" data-title="Get Coin Price">Get Coin Price</a>
+                    <a href="#get-coins-data-pricing" class="toc-h2 toc-link" data-title="Get Coins Data (Pricing)">Get Coins Data (Pricing)</a>
                   </li>
                   <li>
                     <a href="#buy-coin-with-quantity" class="toc-h2 toc-link" data-title="Buy Coin with Quantity">Buy Coin with Quantity</a>
@@ -359,6 +359,12 @@
                   </li>
                   <li>
                     <a href="#sell-coin-with-quote" class="toc-h2 toc-link" data-title="Sell Coin with Quote">Sell Coin with Quote</a>
+                  </li>
+                  <li>
+                    <a href="#sell-amp-cash-out" class="toc-h2 toc-link" data-title="Sell &amp; Cash Out">Sell &amp; Cash Out</a>
+                  </li>
+                  <li>
+                    <a href="#sell-amp-settle-by-merchant" class="toc-h2 toc-link" data-title="Sell &amp; Settle by merchant">Sell &amp; Settle by merchant</a>
                   </li>
                   <li>
                     <a href="#get-orders" class="toc-h2 toc-link" data-title="Get Orders">Get Orders</a>
@@ -403,19 +409,13 @@
 <p>Merchants can view and manage the user’s gold balances and portfolio, providing real-time insights into holdings.</p>
 
 <p>This system provides merchants with all the necessary tools to manage user accounts and transactions efficiently, ensuring both convenience and security at every step.</p>
-<h1 id='authentications'>Authentications</h1>
-<p>You will be issued a unique API key that allows you to access and authenticate your requests to the Zarpay API. This key is crucial for securing your API calls</p>
+<h1 id='authentication'>Authentication</h1>
+<p>ZarPay24 expects for the access token to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p>ZarPay24 expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: your_api_key_here</code></p>
+<p><code>Authorization: Bearer client_access_token</code></p>
 
 <aside class="notice">
-You must replace <code>your_api_key_here</code> with your personal API key.
-</aside>
-
-<aside class="notice">
-To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/c/YMgtJA">Zarpay Support</a> or send mail to <a href="mailto:tech@zarpay24.com">tech@zarpay24.com</a>.
+You must replace <code>client_access_token</code> with client access token.
 </aside>
 <h1 id='kyc'>KYC</h1><h2 id='get-profile-include-kyc-state'>Get Profile(include KYC state)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{BASE_URL}/users/profile/'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
@@ -487,8 +487,8 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 <td>The gregorian birth_date in %Y-%M-%D format.</td>
 </tr>
 </tbody></table>
-<h1 id='balance'>Balance</h1><h2 id='get-balance'>Get Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{BASE_URL}/api/v1/assets/fiat-balance/'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<h1 id='balance'>Balance</h1><h2 id='get-balance'>Get Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{BASE_URL}/assets/fiat-balance/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
 </code></pre></div>
 <blockquote>
@@ -497,57 +497,60 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IRT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20109"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"blocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"blocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOLD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017.317"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25.3157"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"blocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves your balance of each coin.</p>
+<p>This endpoint retrieves client balance of each asset.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET {BASE_URL}/api/v1/assets/fiat-balance/</code></p>
-<h1 id='market'>Market</h1><h2 id='get-coin-price'>Get Coin Price</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://napi.zarpay24.com/api/v1/market/coins/GOLD/'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<p><code>GET {BASE_URL}/assets/fiat-balance/</code></p>
+<h1 id='market'>Market</h1><h2 id='get-coins-data-pricing'>Get Coins Data (Pricing)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{BASE_URL}/market/coins/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOLD"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"persian_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آب‌شده"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"buy_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sell_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"max_order_qty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"350000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"buy_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sell_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fee_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"گرم"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GOLD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"persian_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آبشده"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"buy_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sell_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"max_order_qty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"buy_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5531187"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sell_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5519645"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"گرم"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SILVER"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"persian_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"نقره"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"buy_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sell_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"max_order_qty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"buy_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"102000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sell_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fee_percentage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"گرم"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves detailed information about a specific coin.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://napi.zarpay24.com/api/v1/market/coins/&lt;symbol&gt;/</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>The symbol of coin to retrieve.</td>
-</tr>
-</tbody></table>
-<h2 id='buy-coin-with-quantity'>Buy Coin with Quantity</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/buy/'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<p><code>GET {BASE_URL}/market/coins/</code></p>
+<h2 id='buy-coin-with-quantity'>Buy Coin with Quantity</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{BASE_URL}/market/buy/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
     "coin_id":1,
@@ -568,7 +571,7 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_tracker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.321695Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.319125Z"</span><span class="p">,</span><span class="w">
@@ -577,7 +580,7 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 </span></code></pre></div>
 <p>This endpoint allows you to purchase a coin by specifying the desired quantity.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://napi.zarpay24.com/api/v1/market/buy/</code></p>
+<p><code>GET {BASE_URL}/market/buy/</code></p>
 <h3 id='request-body'>Request Body</h3>
 <table><thead>
 <tr>
@@ -594,8 +597,8 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 <td>The quantity of coin to buy.</td>
 </tr>
 </tbody></table>
-<h2 id='sell-coin-with-quantity'>Sell Coin with Quantity</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/sell/'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<h2 id='sell-coin-with-quantity'>Sell Coin with Quantity</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{BASE_URL}/market/sell/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
     "coin_id":1,
@@ -616,7 +619,7 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_tracker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.321695Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.319125Z"</span><span class="p">,</span><span class="w">
@@ -625,7 +628,7 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 </span></code></pre></div>
 <p>This endpoint allows you to sell a coin by specifying the desired quantity.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://napi.zarpay24.com/api/v1/market/sell/</code></p>
+<p><code>GET {BASE_URL}/market/sell/</code></p>
 <h3 id='request-body-2'>Request Body</h3>
 <table><thead>
 <tr>
@@ -642,8 +645,8 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 <td>The quantity of coin to sell.</td>
 </tr>
 </tbody></table>
-<h2 id='buy-coin-with-quote'>Buy Coin with Quote</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/buy/'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<h2 id='buy-coin-with-quote'>Buy Coin with Quote</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{BASE_URL}/market/buy/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
     "coin_id":1,
@@ -664,7 +667,7 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_tracker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.321695Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.319125Z"</span><span class="p">,</span><span class="w">
@@ -673,7 +676,7 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 </span></code></pre></div>
 <p>This endpoint creates an order to buy a coin by specifying the desired quote amount.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://napi.zarpay24.com/api/v1/market/buy/</code></p>
+<p><code>GET {BASE_URL}/market/buy/</code></p>
 <h3 id='request-body-3'>Request Body</h3>
 <table><thead>
 <tr>
@@ -690,8 +693,8 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 <td>Amount of quote currency to spend.</td>
 </tr>
 </tbody></table>
-<h2 id='sell-coin-with-quote'>Sell Coin with Quote</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/sell/'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<h2 id='sell-coin-with-quote'>Sell Coin with Quote</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{BASE_URL}/market/sell/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--data</span> <span class="s1">'{
     "coin_id":1,
@@ -712,7 +715,7 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_tracker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.321695Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.319125Z"</span><span class="p">,</span><span class="w">
@@ -721,7 +724,7 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 </span></code></pre></div>
 <p>This endpoint creates an order to sell a coin by specifying the desired quote amount.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://napi.zarpay24.com/api/v1/market/sell/</code></p>
+<p><code>GET {BASE_URL}/market/sell/</code></p>
 <h3 id='request-body-4'>Request Body</h3>
 <table><thead>
 <tr>
@@ -738,8 +741,109 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 <td>Amount of quote currency to receive.</td>
 </tr>
 </tbody></table>
-<h2 id='get-orders'>Get Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/orders/'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<h2 id='sell-amp-cash-out'>Sell &amp; Cash Out</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{BASE_URL}/market/sell/cash-out/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "coin_id":1,
+    "quote":"50000"
+    "card_id":53
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">291</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_with_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">80000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_tracker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.321695Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.319125Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آب‌شده"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The final quote_with_fee of this order would be directly withdraw to user bank account (card_id).</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST {BASE_URL}/market/sell/cash-out/</code></p>
+<h3 id='request-body-5'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin_id</td>
+<td>The id of coin to sell.</td>
+</tr>
+<tr>
+<td>quote</td>
+<td>Amount of quote currency to receive.</td>
+</tr>
+<tr>
+<td>card_id</td>
+<td>The id of verified card of client.</td>
+</tr>
+</tbody></table>
+<h2 id='sell-amp-settle-by-merchant'>Sell &amp; Settle by merchant</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{BASE_URL}/market/sell/settle-by-merchant/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "coin_id":1,
+    "quote":"50000"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">291</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_with_fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">80000.0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_tracker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.321695Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-03T12:46:18.319125Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آب‌شده"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The final quote_with_fee of this order would be added to merchant account balances.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST {BASE_URL}/market/sell/settle-by-merchant/</code></p>
+<h3 id='request-body-6'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin_id</td>
+<td>The id of coin to sell.</td>
+</tr>
+<tr>
+<td>quote</td>
+<td>Amount of quote currency to receive.</td>
+</tr>
+</tbody></table>
+<h2 id='get-orders'>Get Orders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{BASE_URL}/market/orders/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
 </code></pre></div>
 <blockquote>
@@ -762,7 +866,7 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-30T10:55:52.949253Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-30T10:55:52.948687Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آبشده"</span><span class="w">
@@ -771,8 +875,8 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of orders with pagination.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://napi.zarpay24.com/api/v1/market/orders/</code></p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET {BASE_URL}/market/orders/</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -789,8 +893,8 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 <td>The number of items per page (default: 10).</td>
 </tr>
 </tbody></table>
-<h2 id='get-order-by-user-tracker'>Get Order by User Tracker</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://napi.zarpay24.com/api/v1/market/orders/by-tracker/&lt;user_tracker&gt;/'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: your_api_key_here'</span> <span class="se">\</span>
+<h2 id='get-order-by-user-tracker'>Get Order by User Tracker</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{BASE_URL}/market/orders/by-tracker/&lt;user_tracker&gt;/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
 </code></pre></div>
 <blockquote>
@@ -813,7 +917,7 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"done"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"request_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"front"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-30T10:55:52.949253Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"finalized_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-30T10:55:52.948687Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"طلا آبشده"</span><span class="w">
@@ -822,9 +926,9 @@ To get <code>your_api_key_here</code>, contact <a href="https://www.goftino.com/
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves the details of a specific order using the <code>user_tracker</code> identifier.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET https://napi.zarpay24.com/api/v1/market/orders/by-tracker/&lt;user_tracker&gt;/</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET {BASE_URL}/market/orders/by-tracker/&lt;user_tracker&gt;/</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
