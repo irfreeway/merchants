@@ -5,8 +5,8 @@
 ## Get Balance
 
 ```shell
-curl --location --request GET '{BASE_URL}/api/v1/assets/fiat-balance/' \
---header 'Authorization: your_api_key_here' \
+curl --location --request GET '{BASE_URL}/assets/fiat-balance/' \
+--header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json'
 ```
 
@@ -16,18 +16,19 @@ curl --location --request GET '{BASE_URL}/api/v1/assets/fiat-balance/' \
 [
     {
         "symbol": "IRT",
-        "balance": "20109",
-        "blocked": "12"
+        "balance": "200000",
+        "blocked": "0"
     },
     {
         "symbol": "GOLD",
-        "balance": "2017.317",
+        "balance": "25.3157",
         "blocked": "0"
     }
 ]
 ```
 
-This endpoint retrieves your balance of each coin.
+This endpoint retrieves client balance of each asset.
+
 ### HTTP Request
 
-`GET {BASE_URL}/api/v1/assets/fiat-balance/`
+`GET {BASE_URL}/assets/fiat-balance/`
