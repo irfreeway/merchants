@@ -1,5 +1,5 @@
 
-# Authentication
+# Authentications
 
  You will be issued a unique API key that allows you to access and authenticate your requests to the Zarpay API. This key is crucial for securing your API calls
 

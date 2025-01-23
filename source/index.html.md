@@ -1,5 +1,5 @@
 ---
-title: Zarpay24 API documentation
+title: Zarpay24 Merchants Guide V0.0.1
 
 language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
   - shell

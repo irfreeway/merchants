@@ -61,3 +61,7 @@ set :port, 4567
 helpers do
   require './lib/toc_data.rb'
 end
+
+
+# Set your base_url here
+@base_url = "https://api.example.com"
