@@ -73,7 +73,7 @@ This endpoint allows you ti submit client personal-info and proceed KYC.
 
 ### HTTP Request
 
-`GET {BASE_URL}/users/personal-info/`
+`POST {BASE_URL}/users/personal-info/`
 
 
 ### Request Body

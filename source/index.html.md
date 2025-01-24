@@ -12,6 +12,7 @@ includes:
   - authentication
   - kyc
   - balance
+  - cards
   - market
   - errors
 
