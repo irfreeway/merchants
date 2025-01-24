@@ -343,6 +343,17 @@
               </ul>
           </li>
           <li>
+            <a href="#cards" class="toc-h1 toc-link" data-title="Cards">Cards</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-verified-cards" class="toc-h2 toc-link" data-title="Get Verified Cards">Get Verified Cards</a>
+                  </li>
+                  <li>
+                    <a href="#add-new-card" class="toc-h2 toc-link" data-title="Add new card">Add new card</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#market" class="toc-h1 toc-link" data-title="Market">Market</a>
               <ul class="toc-list-h2">
                   <li>
@@ -470,7 +481,7 @@ You must replace <code>client_access_token</code> with client access token.
 </span></code></pre></div>
 <p>This endpoint allows you ti submit client personal-info and proceed KYC.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET {BASE_URL}/users/personal-info/</code></p>
+<p><code>POST {BASE_URL}/users/personal-info/</code></p>
 <h3 id='request-body'>Request Body</h3>
 <table><thead>
 <tr>
@@ -510,6 +521,69 @@ You must replace <code>client_access_token</code> with client access token.
 <p>This endpoint retrieves client balance of each asset.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET {BASE_URL}/assets/fiat-balance/</code></p>
+<h1 id='cards'>Cards</h1><h2 id='get-verified-cards'>Get Verified Cards</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{BASE_URL}/users/verified-cards/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6219861929783016"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"iban"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IR720560611828005347224101"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"سامان"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"056"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5859831216890185"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DN"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"iban"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IR900180000000136234069882"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"تجارت"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"018"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves list of client verified cards which will be used for cash out</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET {BASE_URL}/users/verified-cards/</code></p>
+<h2 id='add-new-card'>Add new card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{BASE_URL}/users/cards/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "number": "0010859684",
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="s2">"6219861076488716"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"DN"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"iban"</span><span class="p">:</span><span class="s2">"IR350560213780004605786001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="s2">"سامان"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="s2">"056"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows you ti submit client personal-info and proceed KYC.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST {BASE_URL}/users/cards/</code></p>
+<h3 id='request-body'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>10 digits card number.</td>
+</tr>
+</tbody></table>
 <h1 id='market'>Market</h1><h2 id='get-coins-data-pricing'>Get Coins Data (Pricing)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{BASE_URL}/market/coins/'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
