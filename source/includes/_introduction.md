@@ -1,7 +1,12 @@
 
 # What is this document about?
 
-This project enables merchants to act on behalf of their users, offering a variety of essential services to enhance their experience on our platform. By leveraging the features below, merchants can provide seamless, efficient, and secure interactions for users, handling key account and transaction actions.
+This project enables merchants to act on behalf of clients, offering a variety of essential services to enhance their experience on our platform. By leveraging the features below, merchants can provide seamless, efficient, and secure interactions for users, handling key account and transaction actions.
+
+
+<aside class="notice">
+There are 2 categories of API's which you should implement, merchant-sides API's which are about actions that only merchants are allowed for, and Client-side API's which merchants call on behalf of clients using clients access token.
+</aside>
 
 ## Available Features:
 
