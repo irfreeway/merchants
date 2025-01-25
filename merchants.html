@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta
             name="description"
-            content="Comprehensive guide for our business partners"
+            content="Merchant side guide"
         >
-    <title>Zarpay24 Merchants Guide V0.0.1</title>
+    <title>Merchant Side Configs</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -312,15 +312,87 @@
         </div>
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#user-sign-in" class="toc-h1 toc-link" data-title="User Sign-in">User Sign-in</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#login-register-client-send-otp" class="toc-h2 toc-link" data-title="Login/Register client (send OTP)">Login/Register client (send OTP)</a>
+                  </li>
+                  <li>
+                    <a href="#verify-otp-get-client-access_token" class="toc-h2 toc-link" data-title="Verify OTP (get client access_token)">Verify OTP (get client access_token)</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        
+        <h1 id='user-sign-in'>User Sign-in</h1><h2 id='login-register-client-send-otp'>Login/Register client (send OTP)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{API_BASE_URL}/users/sign-up/send-otp/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: MERCHANT_API_KEY'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "phone_number": "+989124136159",
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"verification code sent."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows you ti submit client personal-info and proceed KYC.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST {API_BASE_URL}/users/sign-up/send-otp/</code></p>
+<h3 id='request-body'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>phone_number</td>
+<td>client phone number startswith: +98</td>
+</tr>
+</tbody></table>
+<h2 id='verify-otp-get-client-access_token'>Verify OTP (get client access_token)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'{API_BASE_URL}/users/sign-up/verify-otp/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: MERCHANT_API_KEY'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data</span> <span class="s1">'{
+    "phone_number": "+989124136159",
+    "code": "25895"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SdvlG5K6QK8IslONhwBbEK7l5QzYO09IEcGdFd7k8yQ"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SdvlG5K6QK8IslONhwBbEK7l5QzYO09IEcGdFd7k8yQ"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows you ti submit client personal-info and proceed KYC.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST {API_BASE_URL}/users/sign-up/verify-otp/</code></p>
+<h3 id='request-body-2'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>phone_number</td>
+<td>client phone number startswith: +98</td>
+</tr>
+<tr>
+<td>code</td>
+<td>OTP sent to client phone number</td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
