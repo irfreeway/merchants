@@ -4,7 +4,7 @@
 
 
 ```shell
-curl --location --request GET '{BASE_URL}/users/profile/' \
+curl --location --request GET '{MERCHANT_BASE_URL}/users/profile/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json'
 ```
@@ -33,7 +33,7 @@ This endpoint retrieves user profile detail which includes KYC state.
 
 ### HTTP Request
 
-`GET {BASE_URL}/users/profile/`
+`GET {MERCHANT_BASE_URL}/users/profile/`
 
 
 
@@ -41,7 +41,7 @@ This endpoint retrieves user profile detail which includes KYC state.
 
 
 ```shell
-curl --location '{BASE_URL}/users/personal-info/' \
+curl --location '{MERCHANT_BASE_URL}/users/personal-info/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -73,7 +73,7 @@ This endpoint allows you ti submit client personal-info and proceed KYC.
 
 ### HTTP Request
 
-`POST {BASE_URL}/users/personal-info/`
+`POST {MERCHANT_BASE_URL}/users/personal-info/`
 
 
 ### Request Body

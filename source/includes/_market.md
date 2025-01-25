@@ -4,7 +4,7 @@
 
 
 ```shell
-curl --location --request GET '{BASE_URL}/market/coins/' \
+curl --location --request GET '{MERCHANT_BASE_URL}/market/coins/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json'
 ```
@@ -46,7 +46,7 @@ This endpoint retrieves detailed information about a specific coin.
 
 ### HTTP Request
 
-`GET {BASE_URL}/market/coins/`
+`GET {MERCHANT_BASE_URL}/market/coins/`
 
 
 
@@ -54,7 +54,7 @@ This endpoint retrieves detailed information about a specific coin.
 
 
 ```shell
-curl --location '{BASE_URL}/market/buy/' \
+curl --location '{MERCHANT_BASE_URL}/market/buy/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -89,7 +89,7 @@ This endpoint allows you to purchase a coin by specifying the desired quantity.
 
 ### HTTP Request
 
-`GET {BASE_URL}/market/buy/`
+`GET {MERCHANT_BASE_URL}/market/buy/`
 
 
 ### Request Body
@@ -106,7 +106,7 @@ quantity | The quantity of coin to buy.
 
 
 ```shell
-curl --location '{BASE_URL}/market/sell/' \
+curl --location '{MERCHANT_BASE_URL}/market/sell/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -141,7 +141,7 @@ This endpoint allows you to sell a coin by specifying the desired quantity.
 
 ### HTTP Request
 
-`GET {BASE_URL}/market/sell/`
+`GET {MERCHANT_BASE_URL}/market/sell/`
 
 
 ### Request Body
@@ -158,7 +158,7 @@ quantity | The quantity of coin to sell.
 
 
 ```shell
-curl --location '{BASE_URL}/market/buy/' \
+curl --location '{MERCHANT_BASE_URL}/market/buy/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -193,7 +193,7 @@ This endpoint creates an order to buy a coin by specifying the desired quote amo
 
 ### HTTP Request
 
-`GET {BASE_URL}/market/buy/`
+`GET {MERCHANT_BASE_URL}/market/buy/`
 
 
 ### Request Body
@@ -210,7 +210,7 @@ quote | Amount of quote currency to spend.
 
 
 ```shell
-curl --location '{BASE_URL}/market/sell/' \
+curl --location '{MERCHANT_BASE_URL}/market/sell/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -245,7 +245,7 @@ This endpoint creates an order to sell a coin by specifying the desired quote am
 
 ### HTTP Request
 
-`GET {BASE_URL}/market/sell/`
+`GET {MERCHANT_BASE_URL}/market/sell/`
 
 
 ### Request Body
@@ -260,7 +260,7 @@ quote | Amount of quote currency to receive.
 ## Sell & Cash Out
 
 ```shell
-curl --location '{BASE_URL}/market/sell/cash-out/' \
+curl --location '{MERCHANT_BASE_URL}/market/sell/cash-out/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -296,7 +296,7 @@ The final quote_with_fee of this order would be directly withdraw to user bank a
 
 ### HTTP Request
 
-`POST {BASE_URL}/market/sell/cash-out/`
+`POST {MERCHANT_BASE_URL}/market/sell/cash-out/`
 
 
 ### Request Body
@@ -313,7 +313,7 @@ card_id | The id of verified card of client.
 ## Sell & Settle by merchant
 
 ```shell
-curl --location '{BASE_URL}/market/sell/settle-by-merchant/' \
+curl --location '{MERCHANT_BASE_URL}/market/sell/settle-by-merchant/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -348,7 +348,7 @@ The final quote_with_fee of this order would be added to merchant account balanc
 
 ### HTTP Request
 
-`POST {BASE_URL}/market/sell/settle-by-merchant/`
+`POST {MERCHANT_BASE_URL}/market/sell/settle-by-merchant/`
 
 
 ### Request Body
@@ -365,7 +365,7 @@ quote | Amount of quote currency to receive.
 
 
 ```shell
-curl --location '{BASE_URL}/market/orders/' \
+curl --location '{MERCHANT_BASE_URL}/market/orders/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json'
 ```
@@ -403,7 +403,7 @@ This endpoint retrieves a list of orders with pagination.
 
 ### HTTP Request
 
-`GET {BASE_URL}/market/orders/`
+`GET {MERCHANT_BASE_URL}/market/orders/`
 
 
 ### Query Parameters
@@ -420,7 +420,7 @@ page_size | The number of items per page (default: 10).
 
 
 ```shell
-curl --location '{BASE_URL}/market/orders/by-tracker/<user_tracker>/' \
+curl --location '{MERCHANT_BASE_URL}/market/orders/by-tracker/<user_tracker>/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json'
 ```
@@ -458,7 +458,7 @@ This endpoint retrieves the details of a specific order using the `user_tracker`
 
 ### HTTP Request
 
-`GET {BASE_URL}/market/orders/by-tracker/<user_tracker>/`
+`GET {MERCHANT_BASE_URL}/market/orders/by-tracker/<user_tracker>/`
 
 
 ### URL Parameters

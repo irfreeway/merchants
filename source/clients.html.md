@@ -1,5 +1,5 @@
 ---
-title: Zarpay24 Merchants Guide V0.0.1
+title: Client Side Configs
 
 language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
   - shell
@@ -20,5 +20,5 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Comprehensive guide for our business partners
+    content: Client side guide
 ---

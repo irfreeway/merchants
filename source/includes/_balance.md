@@ -5,7 +5,7 @@
 ## Get Balance
 
 ```shell
-curl --location --request GET '{BASE_URL}/assets/fiat-balance/' \
+curl --location --request GET '{MERCHANT_BASE_URL}/assets/fiat-balance/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json'
 ```
@@ -31,4 +31,4 @@ This endpoint retrieves client balance of each asset.
 
 ### HTTP Request
 
-`GET {BASE_URL}/assets/fiat-balance/`
+`GET {MERCHANT_BASE_URL}/assets/fiat-balance/`

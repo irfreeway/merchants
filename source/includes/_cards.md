@@ -4,7 +4,7 @@
 
 
 ```shell
-curl --location --request GET '{BASE_URL}/users/verified-cards/' \
+curl --location --request GET '{MERCHANT_BASE_URL}/users/verified-cards/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json'
 ```
@@ -36,7 +36,7 @@ This endpoint retrieves list of client verified cards which will be used for cas
 
 ### HTTP Request
 
-`GET {BASE_URL}/users/verified-cards/`
+`GET {MERCHANT_BASE_URL}/users/verified-cards/`
 
 
 
@@ -44,7 +44,7 @@ This endpoint retrieves list of client verified cards which will be used for cas
 
 
 ```shell
-curl --location '{BASE_URL}/users/cards/' \
+curl --location '{MERCHANT_BASE_URL}/users/cards/' \
 --header 'Authorization: Bearer client_access_token' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -69,7 +69,7 @@ This endpoint allows you ti submit client personal-info and proceed KYC.
 
 ### HTTP Request
 
-`POST {BASE_URL}/users/cards/`
+`POST {MERCHANT_BASE_URL}/users/cards/`
 
 
 ### Request Body
