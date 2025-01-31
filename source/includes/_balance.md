@@ -29,6 +29,11 @@ curl --location --request GET '{MERCHANT_BASE_URL}/assets/fiat-balance/' \
 
 This endpoint retrieves client balance of each asset.
 
+<aside class="notice">
+for recently joined clients there is no record of active balance and the output of this endpoint would be []. make sure you handle it correctly.
+</aside>
+
+
 ### HTTP Request
 
 `GET {MERCHANT_BASE_URL}/assets/fiat-balance/`
