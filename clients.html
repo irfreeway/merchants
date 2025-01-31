@@ -484,6 +484,10 @@ You must replace <code>client_access_token</code> with client access token.
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves client balance of each asset.</p>
+
+<aside class="notice">
+for recently joined clients there is no record of active balance and the output of this endpoint would be []. make sure you handle it correctly.
+</aside>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET {MERCHANT_BASE_URL}/assets/fiat-balance/</code></p>
 <h1 id='cards'>Cards</h1><h2 id='get-verified-cards'>Get Verified Cards</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{MERCHANT_BASE_URL}/users/verified-cards/'</span> <span class="se">\</span>
