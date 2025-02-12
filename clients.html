@@ -314,6 +314,11 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#refresh-token" class="toc-h2 toc-link" data-title="Refresh Token">Refresh Token</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#kyc" class="toc-h1 toc-link" data-title="KYC">KYC</a>
@@ -396,6 +401,24 @@
 <aside class="notice">
 You must replace <code>client_access_token</code> with client access token.
 </aside>
+<h2 id='refresh-token'>Refresh Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{MERCHANT_BASE_URL}/users/refresh/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_refresh_token'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM5OTU0NDk1LCJpYXQiOjE3MzkzNDk2OTUsImp0aSI6IjhhODM4ZWZlZDNiYzRlMjQ5ZjZjNjU3ZWQyY2VhMGU5IiwidXNlcl9pZCI6MTUzLCJtZXJjaGFudF9pZCI6MTR9.bxQ_RYaerOk1mV5G14NHKjaJD944RPXpWH3vE0iEDQY"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this endpoint to generate new access_token for your client based on client_refresh_token you&#39;ve been provided <a href="https://merchants.zarpay24.com/merchants.html#verify-otp-get-client-access_token">here</a>.</p>
+
+<aside class="notice">
+Make sure you pass <code>client_refresh_token</code> as authorization header in this endpoint.
+</aside>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET {MERCHANT_BASE_URL}/users/refresh/</code></p>
 <h1 id='kyc'>KYC</h1><h2 id='get-profile-include-kyc-state'>Get Profile(include KYC state)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'{MERCHANT_BASE_URL}/users/profile/'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Bearer client_access_token'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
