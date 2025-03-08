@@ -66,6 +66,7 @@ This system provides merchants with all the necessary tools to manage user accou
 ## Where to proceed?
 - [Merchant Side](merchants.html)
 - [Client Side](clients.html)
+- [Error Codes](error_codes.html)
 
 <aside class="notice">
 Click on the links above to access each section.
